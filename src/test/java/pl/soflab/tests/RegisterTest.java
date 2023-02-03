@@ -9,11 +9,13 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void registerUserTest() {
-        WebElement entryTitle = new HomePage(driver).openMyAccountPage()
-                .registerUser("test2@test.pl", "test@test.pl123")
-                .getEntryTitle();
 
-        Assert.assertTrue(entryTitle.isDisplayed());
-        Assert.assertEquals(entryTitle.getText(), "My account");
+        int randomNumber = (int) (Math.random() * 1000);
+
+        WebElement dashboardLink = new HomePage(driver).openMyAccountPage()
+                .registerUser("test" + randomNumber + "@test.pl", "test@test.pl123")
+                .getDashboardLink();
+
+        Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 }
