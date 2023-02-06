@@ -20,4 +20,6 @@ public class LoggedUserPage {
     public WebElement getDashboardLink() {
         return dashboardLink;
     }
+
+
 }

@@ -5,29 +5,27 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.soflab.pages.HomePage;
 
-public class RegisterTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
     @Test
-    public void registerUserTest() {
-
-        int randomNumber = (int) (Math.random() * 1000);
+    public void loginWithValidDataTest() {
 
         WebElement dashboardLink = new HomePage(driver)
                 .openMyAccountPage()
-                .registerUserValidData("test" + randomNumber + "@test.pl", "test@test.pl123")
+                .logInValidData("test35@test.pl", "test@test.pl123")
                 .getDashboardLink();
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 
     @Test
-    public void registerUserWithSameEmailTest() {
+    public void loginWithInvalidPasswordTest() {
 
         WebElement error = new HomePage(driver)
                 .openMyAccountPage()
-                .registerUserInvalidData("test@test.pl", "test@test.pl123")
+                .logInInvalidData("test@test.pl", "test@testpl")
                 .getError();
 
-        Assert.assertTrue(error.getText().contains("An account is already registered with your email address."));
+        Assert.assertTrue(error.getText().contains("Incorrect username or password."), "Expected error text does not match");
     }
 }
