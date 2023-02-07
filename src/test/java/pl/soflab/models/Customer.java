@@ -2,16 +2,17 @@ package pl.soflab.models;
 
 public class Customer {
 
-    private String fistName;
-    private String lastName;
-    private String companyName;
-    private String country;
-    private String street;
-    private String flatNumber;
-    private String zipCode;
-    private String city;
-    private String phone;
-    private String email;
+    // Default values set
+    private String fistName = "Bu";
+    private String lastName = "Kropel";
+    private String companyName = "TestCompany";
+    private String country = "Poland";
+    private String street = "Testowa";
+    private String flatNumber = "666";
+    private String zipCode = "52-745";
+    private String city = "Warszawa/Warsaw";
+    private String phone = "123456789";
+    private String email = "test@test.com";
 
     public String getFistName() {
         return fistName;
