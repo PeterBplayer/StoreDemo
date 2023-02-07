@@ -10,10 +10,11 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginWithValidDataTest() {
 
-        WebElement dashboardLink = new HomePage(driver)
-                .openMyAccountPage()
-                .logInValidData("test35@test.pl", "test@test.pl123")
-                .getDashboardLink();
+        WebElement dashboardLink =
+                new HomePage(driver)
+                        .openMyAccountPage()
+                        .logInValidData("test@test.pl", "test@test.pl123")
+                        .getDashboardLink();
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
@@ -21,10 +22,11 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginWithInvalidPasswordTest() {
 
-        WebElement error = new HomePage(driver)
-                .openMyAccountPage()
-                .logInInvalidData("test@test.pl", "test@testpl")
-                .getError();
+        WebElement error =
+                new HomePage(driver)
+                        .openMyAccountPage()
+                        .logInInvalidData("invalidtest@test.pl", "test@testpl")
+                        .getError();
 
         Assert.assertTrue(error.getText().contains("Incorrect username or password."), "Expected error text does not match");
     }
