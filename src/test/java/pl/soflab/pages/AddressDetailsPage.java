@@ -1,13 +1,18 @@
 package pl.soflab.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.soflab.models.Customer;
 import pl.soflab.utils.SeleniumHelper;
+
+import java.time.Duration;
 
 public class AddressDetailsPage {
 
@@ -57,8 +62,14 @@ public class AddressDetailsPage {
         billingEmailInput.sendKeys(customer.getEmail());
         orderCommentsInput.sendKeys(comments);
 
-        SeleniumHelper.waitForBeLocated(By.id("place_order"),driver);
+        SeleniumHelper.waitForBeLocated(By.id("place_order"), driver);
         SeleniumHelper.waitForClickable(placeOrderButton, driver);
+
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .ignoring(StaleElementReferenceException.class)
+                .until(ExpectedConditions.elementToBeClickable(By.id("place_order")));
+
         placeOrderButton.click();
 
         return new OrderDetailsPage(driver);

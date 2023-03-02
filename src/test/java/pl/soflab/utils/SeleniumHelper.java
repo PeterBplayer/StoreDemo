@@ -11,17 +11,17 @@ import java.time.Duration;
 public class SeleniumHelper {
 
     public static void waitForClickable(WebElement element, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20L));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public static void waitForClickable(By locator, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20L));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public static void waitForBeLocated(By locator, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20L));
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 

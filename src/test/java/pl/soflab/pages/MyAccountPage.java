@@ -1,9 +1,11 @@
 package pl.soflab.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.soflab.utils.SeleniumHelper;
 
 public class MyAccountPage {
 
@@ -11,7 +13,7 @@ public class MyAccountPage {
     private WebElement regEmailInput;
     @FindBy(id = "reg_password")
     private WebElement regPasswordInput;
-    @FindBy(name = "register")
+    @FindBy(xpath = "//button[@name='register']")
     private WebElement registerButton;
     @FindBy(id = "username")
     private WebElement userNameInput;
@@ -32,6 +34,8 @@ public class MyAccountPage {
     private void registerUser(String email, String password) {
         regEmailInput.sendKeys(email);
         regPasswordInput.sendKeys(password);
+        SeleniumHelper.waitForBeLocated(By.xpath("//button[@name='register']"), driver);
+        SeleniumHelper.waitForClickable(registerButton, driver);
         registerButton.click();
     }
 

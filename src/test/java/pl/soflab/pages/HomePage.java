@@ -12,13 +12,13 @@ public class HomePage {
     private WebElement myAccountLink;
     @FindBy(xpath = "//span[text()='Shop']")
     private WebElement shopLink;
-    @FindBy(id = "nimble_name141529173")
+    @FindBy(name = "nimble_name")
     private WebElement titleInput;
-    @FindBy(id = "nimble_email141529173")
+    @FindBy(name = "nimble_email")
     private WebElement emailInput;
-    @FindBy(id = "nimble_message141529173")
+    @FindBy(name = "nimble_message")
     private WebElement massageInput;
-    @FindBy(id = "nimble_submit141529173")
+    @FindBy(name = "nimble_submit")
     private WebElement submitButton;
     @FindBy(css = "span[class='sek-form-message']")
     private WebElement confirmation;
