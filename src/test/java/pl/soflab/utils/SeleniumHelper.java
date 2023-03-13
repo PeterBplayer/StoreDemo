@@ -1,6 +1,7 @@
 package pl.soflab.utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +29,12 @@ public class SeleniumHelper {
     public static void waitForBeVisible(WebElement element, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20L));
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void ignoreStaleElementRefExp(By locator, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10l));
+        wait.ignoring(StaleElementReferenceException.class)
+                .until(ExpectedConditions.elementToBeClickable(locator));
     }
 
 }

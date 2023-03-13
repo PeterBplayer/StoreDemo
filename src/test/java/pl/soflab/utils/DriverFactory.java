@@ -14,6 +14,5 @@ public class DriverFactory {
         options.setHeadless(false);
         options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
         return new ChromeDriver(options);
-
     }
 }
