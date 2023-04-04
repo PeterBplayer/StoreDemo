@@ -17,7 +17,7 @@ public class HomePage {
     @FindBy(name = "nimble_email")
     private WebElement emailInput;
     @FindBy(name = "nimble_message")
-    private WebElement massageInput;
+    private WebElement messageInput;
     @FindBy(name = "nimble_submit")
     private WebElement submitButton;
     @FindBy(css = "span[class='sek-form-message']")
@@ -43,7 +43,7 @@ public class HomePage {
     public HomePage fillUpContactForm(String subject, String email, String msgString) {
         titleInput.sendKeys(subject);
         emailInput.sendKeys(email);
-        massageInput.sendKeys(msgString);
+        messageInput.sendKeys(msgString);
         submitButton.click();
         return this;
     }

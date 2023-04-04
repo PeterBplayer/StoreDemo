@@ -32,7 +32,7 @@ public class SeleniumHelper {
     }
 
     public static void ignoreStaleElementRefExp(By locator, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10l));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10L));
         wait.ignoring(StaleElementReferenceException.class)
                 .until(ExpectedConditions.elementToBeClickable(locator));
     }
